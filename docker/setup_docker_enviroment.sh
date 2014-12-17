@@ -3,7 +3,8 @@
 # SETUP ENV
 COREOS_IPXE_SERVER_BASE_URL="<ip/dns record>:4777"
 COREOS_IPXE_SERVER_LISTEN_ADDR="0.0.0.0:4777"
-VERSIONS=("410.0.0")  
+# VERSIONS=("410.0.0") 
+VERSIONS=("494.5.0")
 
 # PREPARE DIRECTORY STRUCTURE
 mkdir -p {configs,images,profiles,sshkeys}
