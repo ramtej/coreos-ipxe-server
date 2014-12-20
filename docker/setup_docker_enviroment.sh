@@ -4,7 +4,7 @@
 COREOS_IPXE_SERVER_BASE_URL="<ip/dns record>:4777"
 COREOS_IPXE_SERVER_LISTEN_ADDR="0.0.0.0:4777"
 # VERSIONS=("410.0.0") 
-VERSIONS=("494.0.0")
+VERSIONS=("494.5.0")
 
 # PREPARE DIRECTORY STRUCTURE
 mkdir -p {configs,images,profiles,sshkeys}
@@ -14,9 +14,14 @@ for VERSION in "${VERSIONS[@]}"
 do
 	echo "Downloading files for version ${VERSION}"
 	mkdir -p images/amd64-usr/$VERSION
-	wget -nc http://storage.core-os.net/coreos/amd64-usr/$VERSION/coreos_production_pxe_image.cpio.gz -O images/amd64-usr/${VERSION}/coreos_production_pxe_image.cpio.gz
-	wget -nc http://storage.core-os.net/coreos/amd64-usr/$VERSION/coreos_production_pxe.vmlinuz -O images/amd64-usr/${VERSION}/coreos_production_pxe.vmlinuz
+	# wget -nc http://storage.core-os.net/coreos/amd64-usr/$VERSION/coreos_production_pxe_image.cpio.gz -O images/amd64-usr/${VERSION}/coreos_production_pxe_image.cpio.gz
+	# wget -nc http://storage.core-os.net/coreos/amd64-usr/$VERSION/coreos_production_pxe.vmlinuz -O images/amd64-usr/${VERSION}/coreos_production_pxe.vmlinuz
+
+	wget -nc http://stable.release.core-os.net/amd64-usr/$VERSION/coreos_production_pxe_image.cpio.gz -O images/amd64-usr/${VERSION}/coreos_production_pxe_image.cpio.gz
+	wget -nc http://stable.release.core-os.net/amd64-usr/$VERSION/coreos_production_pxe.vmlinuz -O images/amd64-usr/${VERSION}/coreos_production_pxe.vmlinuz
+
 done
+
 
 # CUSTOMIZE COREOS SERVER CONFIGURATION
 echo "<ssh-key>" > sshkeys/coreos.pub
